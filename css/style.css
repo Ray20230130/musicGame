@@ -1,0 +1,310 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: bisque;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#darkAll,
+#darkL,
+#darkR {
+  display: none;
+}
+
+.closeLight {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0%;
+  left: 0;
+  right: 0%;
+  bottom: 0;
+  z-index: 99;
+  pointer-events: none;
+}
+.closeLight.closeLight01 {
+  -webkit-clip-path: polygon(100% 0, 60% 0, 100% 100%);
+          clip-path: polygon(100% 0, 60% 0, 100% 100%);
+}
+.closeLight.closeLight02 {
+  -webkit-clip-path: polygon(0 0, 40% 0, 0 100%);
+          clip-path: polygon(0 0, 40% 0, 0 100%);
+}
+
+.barBox {
+  overflow: hidden;
+  width: 1250px;
+  white-space: nowrap;
+  opacity: 0.7;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.barBox .bar {
+  background-color: rgb(148, 148, 148);
+  width: 20px;
+  height: 600px;
+  margin: 2px;
+  border-radius: 5px;
+  display: inline-block;
+  position: relative;
+}
+.barBox .bar .barLine {
+  background-color: #ad3567;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  right: 0%;
+  bottom: 0%;
+}
+
+.controlBoard {
+  background-color: rgba(233, 150, 122, 0.8);
+  width: 1000px;
+  height: 500px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 16px;
+}
+
+.bigClock {
+  background-color: rgba(207, 193, 114, 0.8);
+  text-align: center;
+}
+.bigClock .bigClockText {
+  font-size: 30px;
+}
+.bigClock .bigClockText span {
+  display: inline-block;
+  width: 50px;
+}
+
+@keyframes playaudio {
+  0% {
+    transform: translate(0%, 0%);
+  }
+  25% {
+    transform: translate(1%, 1%) scale(1.05);
+  }
+  50% {
+    transform: translate(0%, 0%);
+  }
+  75% {
+    transform: translate(-1%, -1%) scale(0.95);
+  }
+  100% {
+    transform: translate(0%, 0%);
+  }
+}
+.playaudio {
+  animation: playaudio 0.3s linear infinite normal;
+}
+
+.audioImg {
+  /* background-color: #269191; */
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+}
+.audioImg.audioImgL {
+  background: url(../images/Audio-YL.png) center center/cover;
+  left: -15%;
+}
+.audioImg.audioImgR {
+  background: url(../images/Audio-YR.png) center center/cover;
+  right: -15%;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(-360deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.shake {
+  animation: shake 5s linear infinite normal;
+}
+
+.musicBox {
+  width: 75%;
+  min-height: 10vh;
+  padding: 16px;
+  margin: 16px auto;
+}
+.musicBox .box {
+  display: inline-block;
+  border-radius: 50%;
+  margin: 20px 10px;
+  cursor: pointer;
+}
+.musicBox .box .text {
+  background-color: #f5dd9d;
+  width: 108px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.musicBox .box .text i {
+  font-size: 32px;
+}
+
+.buttons {
+  text-align: center;
+}
+.buttons button {
+  background-color: #f5dd9d;
+  padding: 8px 24px;
+  margin: 0 5px;
+  border: 4px solid #e4a972;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.danceBoard {
+  background-color: #946335;
+  width: 1000px;
+  height: 80px;
+  position: absolute;
+  top: calc(50% + 310px);
+  left: 50%;
+  transform: translateX(-50%) skew(-15deg, 0);
+  text-align: center;
+  border-radius: 10px;
+}
+.danceBoard img {
+  width: 8%;
+  transform: translateY(-20%) skew(15deg, 0);
+}
+
+/*  -----------------RWD 區域 -----------------------------*/
+/* 平板 */
+@media (min-width: 751px) and (max-width: 1250px) {
+  .barBox {
+    width: 850px;
+  }
+  .barBox .bar {
+    height: 408px;
+  }
+  .controlBoard {
+    width: 680px;
+    height: 340px;
+    padding: 10.88px;
+  }
+  .bigClockText {
+    font-size: 20.4px;
+  }
+  .bigClockText span {
+    width: 34px;
+  }
+  .audioImg {
+    width: 204px;
+    height: 204px;
+  }
+  .musicBox {
+    padding: 10.88px;
+    margin: 10.88px auto;
+  }
+  .musicBox .box {
+    margin: 13.6px 6.8px;
+  }
+  .musicBox .box .text {
+    width: 73.44px;
+    height: 68px;
+  }
+  .musicBox .box .text i {
+    font-size: 21.76px;
+  }
+  .buttons button {
+    padding: 5.44px 16.32px;
+    margin: 0 3.4px;
+    border: 2.72px solid #e4a972;
+    border-radius: 6.8px;
+    font-size: 13.6px;
+  }
+  .danceBoard {
+    width: 680px;
+    height: 54.4px;
+    top: calc(50% + 210.8px);
+  }
+}
+/* 手機 */
+@media (max-width: 750px) {
+  .barBox {
+    width: 94.5vw;
+  }
+  .barBox .bar {
+    height: 162vw;
+  }
+  .controlBoard {
+    width: 87.75vw;
+    height: 148.5vw;
+    padding: 2.16vw;
+  }
+  .bigClockText {
+    font-size: 4.05vw;
+  }
+  .bigClockText span {
+    width: 2.7vw;
+  }
+  .audioImg {
+    width: 40.5vw;
+    height: 40.5vw;
+    top: 73%;
+  }
+  .audioImg.audioImgL {
+    left: 3%;
+  }
+  .audioImg.audioImgR {
+    right: 3%;
+  }
+  .musicBox {
+    padding: 2.16vw;
+    margin: 2.16vw auto 0.675vw;
+    text-align: center;
+  }
+  .musicBox .box {
+    margin: 2.7vw 1.35vw;
+  }
+  .musicBox .box .text {
+    width: 14.58vw;
+    height: 13.5vw;
+  }
+  .musicBox .box .text i {
+    font-size: 4.32vw;
+  }
+  .buttons button {
+    padding: 1.35vw 4.725vw;
+    margin: 0 0.675vw;
+    border: 0.81vw solid #e4a972;
+    border-radius: 1.35vw;
+    font-size: 4.05vw;
+  }
+  .danceBoard {
+    width: 94.5vw;
+    height: 14.85vw;
+    top: calc(50% + 74.25vw);
+    left: 50%;
+  }
+  .danceBoard img {
+    width: 9.5%;
+    transform: translateY(0%) skew(15deg, 0);
+  }
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,388 @@
+$CBWidth : 1000px;
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: bisque;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#darkAll,
+#darkL,
+#darkR {
+  display: none;
+}
+
+.closeLight {
+  background-color: rgba(0, 0, 0, .4);
+  position: absolute;
+  top: 0%;
+  left: 0;
+  right: 0%;
+  bottom: 0;
+  z-index: 99;
+  pointer-events: none;
+
+  &.closeLight01 {
+    clip-path: polygon(100% 0, 60% 0, 100% 100%);
+  }
+
+  &.closeLight02 {
+    clip-path: polygon(0 0, 40% 0, 0 100%);
+  }
+}
+
+.barBox {
+  // background-color: aqua;
+  overflow: hidden;
+  width: $CBWidth * 1.25;
+  white-space: nowrap;
+  opacity: .7;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .bar {
+    background-color: rgb(148, 148, 148);
+    width: 20px;
+    height: $CBWidth * 0.6;
+    margin: 2px;
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+
+    .barLine {
+      background-color: #ad3567;
+      border-radius: 5px;
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      right: 0%;
+      bottom: 0%;
+    }
+  }
+}
+
+
+
+.controlBoard {
+  background-color: rgba(233, 150, 122, .8);
+  width: $CBWidth;
+  height: $CBWidth * 0.5;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: $CBWidth * 0.016;
+}
+
+.bigClock {
+  background-color: rgba(207, 193, 114, .8);
+  text-align: center;
+
+  .bigClockText {
+    font-size: $CBWidth * 0.03;
+  }
+
+  .bigClockText span {
+    // background-color: aqua;
+    display: inline-block;
+    width: $CBWidth * 0.05;
+  }
+}
+
+@keyframes playaudio {
+  0% {
+    transform: translate(0%, 0%)
+  }
+
+  ;
+
+  25% {
+    transform: translate(1%, 1%) scale(1.05)
+  }
+
+  ;
+
+  50% {
+    transform: translate(0%, 0%)
+  }
+
+  ;
+
+  75% {
+    transform: translate(-1%, -1%) scale(0.95)
+  }
+
+  ;
+
+  100% {
+    transform: translate(0%, 0%)
+  }
+
+  ;
+}
+
+.playaudio {
+  animation: playaudio .3s linear infinite normal;
+}
+
+.audioImg {
+  /* background-color: #269191; */
+  width: $CBWidth * 0.3;
+  height: $CBWidth * 0.3;
+  position: absolute;
+  top: 50%;
+
+  &.audioImgL {
+    background: url(../images/Audio-YL.png) center center / cover;
+    left: -15%;
+  }
+
+  &.audioImgR {
+    background: url(../images/Audio-YR.png) center center / cover;
+    right: -15%;
+  }
+}
+
+
+
+@keyframes shake {
+  0% {
+    transform: rotate(-360deg)
+  }
+
+  ;
+
+  100% {
+    transform: rotate(360deg)
+  }
+
+  ;
+}
+
+.shake {
+  animation: shake 5s linear infinite normal;
+}
+
+.musicBox {
+  // background-color: aquamarine;
+  width: 75%;
+  min-height: 10vh;
+  padding: $CBWidth * 0.016;
+  margin: $CBWidth * 0.016 auto;
+
+  .box {
+    display: inline-block;
+    border-radius: 50%;
+    margin: $CBWidth * 0.02 $CBWidth * 0.01;
+    cursor: pointer;
+
+    .text {
+      background-color: #f5dd9d;
+      width: $CBWidth * 0.108;
+      height: $CBWidth * 0.1;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      i {
+        font-size: $CBWidth * 0.032;
+      }
+    }
+
+  }
+}
+
+.buttons {
+  text-align: center;
+
+  button {
+    background-color: #f5dd9d;
+    padding: $CBWidth * 0.008 $CBWidth * 0.024;
+    margin: 0 $CBWidth * 0.005;
+    border: $CBWidth * 0.004 solid #e4a972;
+    border-radius: $CBWidth * 0.01;
+    font-size: $CBWidth * 0.02;
+    font-weight: 800;
+    cursor: pointer;
+  }
+}
+
+.danceBoard {
+  background-color: #946335;
+  width: $CBWidth;
+  height: $CBWidth * 0.08;
+  position: absolute;
+  top: calc(50% + $CBWidth * 0.31);
+  left: 50%;
+  transform: translateX(-50%) skew(-15deg, 0);
+  text-align: center;
+  border-radius: $CBWidth * 0.01;
+
+  img {
+    // display: none;
+    width: 8%;
+    transform: translateY(-20%) skew(15deg, 0);
+  }
+}
+
+/*  -----------------RWD 區域 -----------------------------*/
+
+/* 平板 */
+@media (min-width:751px) and (max-width:1250px) {
+
+  $CBWidth : 680px;
+
+  .barBox {
+    width: $CBWidth * 1.25;
+    .bar {
+      height: $CBWidth * 0.6;
+    }
+  }
+
+  .controlBoard {
+    width: $CBWidth;
+    height: $CBWidth * 0.5;
+    padding: $CBWidth * 0.016;
+  }
+
+  .bigClockText {
+    font-size: $CBWidth * 0.03;
+  }
+
+  .bigClockText span {
+    width: $CBWidth * 0.05;
+  }
+
+  .audioImg {
+    width: $CBWidth * 0.3;
+    height: $CBWidth * 0.3;
+  }
+
+  .musicBox {
+    padding: $CBWidth * 0.016;
+    margin: $CBWidth * 0.016 auto;
+
+    .box {
+      margin: $CBWidth * 0.02 $CBWidth * 0.01;
+      .text {
+        width: $CBWidth * 0.108;
+        height: $CBWidth * 0.1;
+        i {
+          font-size: $CBWidth * 0.032;
+        }
+      }
+    }
+  }
+
+  .buttons {
+    button {
+      padding: $CBWidth * 0.008 $CBWidth * 0.024;
+      margin: 0 $CBWidth * 0.005;
+      border: $CBWidth * 0.004 solid #e4a972;
+      border-radius: $CBWidth * 0.01;
+      font-size: $CBWidth * 0.02;
+    }
+  }
+
+  .danceBoard {
+    width: $CBWidth;
+    height: $CBWidth * 0.08;
+    top: calc(50% + $CBWidth * 0.31);
+  }
+}
+
+
+/* 手機 */
+@media (max-width:750px){
+  $CBWidth : 135vw;
+
+  .barBox {
+    width: $CBWidth * 0.7;
+    .bar {
+      height: $CBWidth * 1.2;
+    }
+  }
+
+  .controlBoard {
+    width: $CBWidth * 0.65;
+    height: $CBWidth * 1.1;
+    padding: $CBWidth * 0.016;
+  }
+
+  .bigClockText {
+    font-size: $CBWidth * 0.03;
+  }
+
+  .bigClockText span {
+    width: $CBWidth * 0.02;
+  }
+
+  .audioImg {
+    width: $CBWidth * 0.3;
+    height: $CBWidth * 0.3;
+    top: 73%;
+    &.audioImgL {
+      left: 3%;
+    }
+    &.audioImgR {
+      right: 3%;
+    }
+  }
+
+  .musicBox {
+    padding: $CBWidth * 0.016;
+    margin: $CBWidth * 0.016 auto $CBWidth * 0.005;
+    text-align: center;
+
+    .box {
+      margin: $CBWidth * 0.02 $CBWidth * 0.01;
+      .text {
+        width: $CBWidth * 0.108;
+        height: $CBWidth * 0.1;
+        i {
+          font-size: $CBWidth * 0.032;
+        }
+      }
+    }
+  }
+
+  .buttons {
+    // background-color: chocolate;
+    button {
+      padding: $CBWidth * 0.01 $CBWidth * 0.035;
+      margin: 0 $CBWidth * 0.005;
+      border: $CBWidth * 0.006 solid #e4a972;
+      border-radius: $CBWidth * 0.01;
+      font-size: $CBWidth * 0.03;
+    }
+  }
+
+  .danceBoard {
+    width: $CBWidth * 0.7;
+    height: $CBWidth * 0.11;
+    top: calc(50% + $CBWidth * 0.55);
+    left: 50%;
+    img {
+      width: 9.5%;
+      transform: translateY(0%) skew(15deg, 0);
+    }
+  }
+}
+
+
+
+
+
+
